@@ -1,6 +1,13 @@
 import { CustomFilter, Hero, SearchBar } from "@/components";
+import { fetchCars } from "@/utils";
 
-export default function Home() {
+export default async function Home() {
+  const allCars = await fetchCars();
+
+  const isDataEmpty =  !Array.isArray(allCars) || allCars.length < 1 || !allCars;
+
+  
+  
   return (
     <main className="overflow-hidden">
       <Hero />
@@ -10,7 +17,7 @@ export default function Home() {
             Car Catalogue
           </h1>
           <p>
-            Explore the best cars availible on Carly
+            Explore the best cars available on Carly 
           </p>
 
         </div>
@@ -21,11 +28,24 @@ export default function Home() {
           <div className="home__filter-container">
             <CustomFilter />
             <CustomFilter />
-
-            
-
           </div>
         </div>
+
+        {!isDataEmpty ? (
+          <section>
+            WE HAVE CARS
+          </section>
+         ) : (
+            <div className="home__error-container">
+              <h2 className="text-black text-xl font-bold">
+                Oops, no cars found!
+              </h2>
+              <p className="text-gray-500">
+                Try adjusting your search filters to find what you're looking for.
+              </p>
+            </div>
+          
+        )}
 
       </div>
     </main>
