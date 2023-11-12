@@ -16,3 +16,27 @@ export async function fetchCars() {
     return error;
   }
 }
+
+
+/**
+ * Calculates the total price of renting a car based on the city miles per gallon (mpg) and the year of the car.
+ * @param city_mpg The city miles per gallon of the car.
+ * @param year The year of the car.
+ * @returns The total price of renting the car.
+ */
+export const calculateCarRent = (city_mpg: number, year: number) => {
+
+    const basePricePerDay = 50;
+
+    const mileageFactor =  0.1;
+
+    const ageFactor = 0.05;
+
+    const mileageDiscount = city_mpg * mileageFactor;
+
+    const ageDiscount = (new Date().getFullYear() - year) * ageFactor;
+
+    const totalPrice = basePricePerDay + mileageDiscount + ageDiscount;
+
+    return totalPrice.toFixed(0);
+}
