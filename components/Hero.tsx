@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { CustomButton } from ".";
 
-const Hero = () => {
+const Hero: React.FC = () => {
   const handleScroll = () => {};
   return (
     <div className="hero">
