@@ -6,6 +6,9 @@ export interface CustomButtonProps {
   containerStyles?: string;
   btnType?: "button" | "submit" | "reset";
   handleClick?: MouseEventHandler<HTMLButtonElement>;
+  textStyles?: string;
+  rightIcon?: string;
+  isDisabled?: boolean;
 }
 
 export interface SearchManufacturerProps {
