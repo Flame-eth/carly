@@ -1,4 +1,6 @@
+import { footerLinks } from "@/constants";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
@@ -17,7 +19,29 @@ const Footer = () => {
             Carly 2023 <br />
             All rights reserved &copy;
           </p>
-          <div className="footer__links"></div>
+        </div>
+        <div className="footer__links">
+          {footerLinks.map((link, index) => (
+            <div className="footer__link" key={index}>
+              <h3 className="font-bold">{link.title}</h3>
+              {link.links.map((item, index) => (
+                <Link href={item.url} key={index}>
+                  {item.title}
+                </Link>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="flex justify-between flex-col md:flex-row items-center mt-10 flex-wrap border-t border-gray-100 sm:px-16 px-6 py-10">
+        <p>@2023 Carly. All Rights Reserved</p>
+        <div className="footer__copyrights-link">
+          <Link className="text-gray-500" href="/">
+            Privacy Policy
+          </Link>
+          <Link className="text-gray-500" href="/">
+            Terms of Service
+          </Link>
         </div>
       </div>
     </footer>
