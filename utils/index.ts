@@ -8,7 +8,7 @@ export async function fetchCars() {
 
   try {
     const response = await axios.get(
-      "https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla&limit=30",
+      "https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla&limit=12",
       { headers }
     );
     return response.data;
