@@ -29,34 +29,32 @@ const SearchBar: React.FC = () => {
 
   const router = useRouter();
 
-  const updateSearchParams= (model: string, manufacturer: string) => {
+  const updateSearchParams = (model: string, manufacturer: string) => {
     const params = new URLSearchParams(window.location.search);
-    if(model){
-
+    if (model) {
       params.set("model", model);
-    }else {
+    } else {
       params.delete("model");
     }
-    if(manufacturer){
+    if (manufacturer) {
       params.set("manufacturer", manufacturer);
-    }else {
+    } else {
       params.delete("manufacturer");
     }
     const pathname = `${window.location.pathname}?${params.toString()}`;
 
-    router.push(pathname);
-
-    
-  }
+    router.push(pathname, {
+      scroll: false,
+    });
+  };
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if(!manufacturer && !model) {
-      return alert("Please enter a manufacturer or model")
+    if (!manufacturer && !model) {
+      return alert("Please enter a manufacturer or model");
     }
 
     updateSearchParams(model.toLowerCase(), manufacturer.toLowerCase());
-
   };
   return (
     <form action="" className="searchbar" onSubmit={handleSearch}>
@@ -85,10 +83,8 @@ const SearchBar: React.FC = () => {
           onChange={(e) => setModel(e.target.value)}
         />
         <SearchButton otherClasses="sm:hidden" />
-
       </div>
       <SearchButton otherClasses="max-sm:hidden" />
-
     </form>
   );
 };
