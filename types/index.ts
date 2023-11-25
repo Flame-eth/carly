@@ -60,3 +60,9 @@ export interface CustomFilterProps {
   options: OptionsProps[];
 
 }
+
+
+export interface ShowMoreProps {
+  pageNumber: number;
+  isNext: boolean;
+}
