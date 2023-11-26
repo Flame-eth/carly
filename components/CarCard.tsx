@@ -5,9 +5,10 @@ import Image from "next/image";
 import { useState } from "react";
 import { CarDetails, CustomButton } from ".";
 import { CarProps } from "@/types";
+import { motion } from "framer-motion";
 
 interface CarCardProps {
-    car: CarProps;
+  car: CarProps;
 }
 
 const CarCard: React.FC<CarCardProps> = ({ car }) => {
@@ -17,7 +18,24 @@ const CarCard: React.FC<CarCardProps> = ({ car }) => {
 
   const carRent = calculateCarRent(city_mpg, year);
   return (
-    <div className="car-card group">
+    <motion.div
+      className="car-card group"
+      initial={{
+        opacity: 0,
+        scale: 0.2,
+      }}
+      whileInView={{
+        opacity: 1,
+        scale: 1,
+      }}
+      whileHover={{
+        scale: 1.1,
+      }}
+      transition={{
+        duration: 0.3,
+        type: "spring",
+      }}
+    >
       <div className="car-card__content">
         <h2 className="car-card__content-title">
           {make} {model}
@@ -30,7 +48,18 @@ const CarCard: React.FC<CarCardProps> = ({ car }) => {
         <span className="self-end text-[14px] font-semibold">/day</span>
       </p>
 
-      <div className="relative w-full h-40 my-3 object-contain ">
+      <motion.div
+        className="relative w-full h-40 my-3 object-contain "
+        initial={{
+          x: "-100%",
+        }}
+        whileInView={{
+          x: 0,
+        }}
+        transition={{
+          duration: 1,
+        }}
+      >
         <Image
           src={generateCarImageUrl(car)}
           alt="car model"
@@ -38,7 +67,7 @@ const CarCard: React.FC<CarCardProps> = ({ car }) => {
           priority
           className="object-contain"
         />
-      </div>
+      </motion.div>
 
       <div className="relative flex w-full mt-2">
         <div className="flex group-hover:invisible w-full justify-between text-gray">
@@ -75,8 +104,12 @@ const CarCard: React.FC<CarCardProps> = ({ car }) => {
         </div>
       </div>
 
-      <CarDetails isOpen={isOpen}  closeModal={() => setIsOpen(false)} car={car}/>
-    </div>
+      <CarDetails
+        isOpen={isOpen}
+        closeModal={() => setIsOpen(false)}
+        car={car}
+      />
+    </motion.div>
   );
 };
 
