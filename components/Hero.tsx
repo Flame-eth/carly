@@ -1,12 +1,27 @@
 "use client";
 import Image from "next/image";
 import { CustomButton } from ".";
+import { motion } from "framer-motion";
 
 const Hero: React.FC = () => {
   const handleScroll = () => {};
   return (
     <div className="hero">
-      <div className="flex-1 pt-36 padding-x ">
+      <motion.div
+        className="flex-1 pt-36 padding-x "
+        initial={{
+          x: "-100%",
+        }}
+        animate={{
+          x: 0,
+        }}
+        exit={{
+          x: 0,
+        }}
+        transition={{
+          duration: 0.5,
+        }}
+      >
         <h1 className="hero__title">
           Find, book or rent a car --quickly and easily!
         </h1>
@@ -20,14 +35,34 @@ const Hero: React.FC = () => {
           containerStyles="bg-primary-blue text-white rounded-full mt-10"
           handleClick={handleScroll}
         />
-      </div>
+      </motion.div>
 
-      <div className="hero__image-container">
-        <div className="hero__image">
+      <motion.div
+        className="hero__image-container"
+        // animate={{
+        //   scale: [0.8, 1.4],
+        // }}
+        // transition={{
+        //   duration: 10,
+        //   repeat: Infinity,
+        //   repeatType: "reverse",
+        // }}
+      >
+        <motion.div
+          className="hero__image"
+          animate={{
+            x: [null, -200, 200, 0],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
+        >
           <Image src="/hero.png" alt="hero" fill className="object-contain " />
-        </div>
-          <div className="hero__image-overlay"></div>
-      </div>
+        </motion.div>
+        <div className="hero__image-overlay"></div>
+      </motion.div>
     </div>
   );
 };
