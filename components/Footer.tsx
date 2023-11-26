@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 const Footer: React.FC = () => {
   return (
     <motion.div
-      className="flex flex-col text-black-100 mt-5 border-t border-gray-100 "
+      className="flex overflow-hidden flex-col text-black-100 mt-5 border-t border-gray-100 "
       initial={{
         y: -100,
       }}
