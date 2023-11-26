@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
         <motion.div
           className="hero__image"
           animate={{
-            x: [null, -200, 200, 0],
+            x: [-200, 200, 0],
           }}
           transition={{
             duration: 3,
