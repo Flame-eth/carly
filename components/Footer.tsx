@@ -1,11 +1,28 @@
+"use client";
 import { footerLinks } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { motion } from "framer-motion";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="flex flex-col text-black-100 mt-5 border-t border-gray-100 ">
+    <motion.div
+      className="flex flex-col text-black-100 mt-5 border-t border-gray-100 "
+      initial={{
+        y: -100,
+      }}
+      whileInView={{
+        y: [200, 150, 180, 100, 120, 60, 90, 30, 50, 0],
+        scale: [0.5, 0.6, 0.7, 0.8, 0.9, 1],
+      }}
+      transition={{
+        duration: 0.5,
+        type: "spring",
+        stiffness: 100,
+        damping: 10,
+      }}
+    >
       <div className="flex max-md:flex-col flex-wrap justify-between gap-5 sm:px-16 px-6 py-10  ">
         <div className="flex flex-col justify-start items-start gap-6 ">
           <Image
@@ -44,7 +61,7 @@ const Footer: React.FC = () => {
           </Link>
         </div>
       </div>
-    </footer>
+    </motion.div>
   );
 };
 
