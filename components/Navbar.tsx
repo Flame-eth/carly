@@ -16,9 +16,9 @@ const Navbar: React.FC = () => {
         y: 0,
       }}
       transition={{
-        duration: 0.5,
+        duration: 1.0,
         // ease: "easeInOut",
-        type: "spring",
+        // type: "spring",
       }}
     >
       <nav className="max-w-[1440px] mx-auto flex justify-between items-center sm:px-16 pc-6 py-4">
